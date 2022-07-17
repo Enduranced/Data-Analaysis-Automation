@@ -14,15 +14,14 @@ def Daily_checker(data):
     cash_on_hand = data['Cash On Hand']
     
     days = data['Day']
-    print(len(days))
 
     for i in range(len(data)):
         ## Checking the dip
-        if  i == len(data)-1:
-            break
-        if cash_on_hand[i] < cash_on_hand[i+1]:
-            diff = 
-            issues[days[i]] = cash_on_hand[i]
+        if  (i == 0) or (i == len(data)-1): # Skips the first day
+            continue
+        if cash_on_hand[i] < cash_on_hand[i-1]:
+            diff = cash_on_hand[i] - cash_on_hand[i-1]
+            issues[days[i]] = [cash_on_hand[i], diff]
     print(issues)
         
 
